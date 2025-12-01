@@ -79,6 +79,24 @@ python train_sam_decoder_bdd100k.py \
 
 > 确保 `world-size` 不超过可用 GPU 数，必要时改用 `torchrun --nproc_per_node=4 ...`。
 
+### Batched 训练（支持 batch>1）
+```bash
+python train_sam_decoder_batched.py \
+  --batch-size 4 \
+  --num-epochs 10 \
+  --max-classes-per-image 4
+```
+
+### Batched 多卡训练
+```bash
+python train_sam_decoder_batched.py \
+  --distributed \
+  --world-size 4 \
+  --batch-size 2 \
+  --num-epochs 20 \
+  --max-classes-per-image 6
+```
+
 ### tmux 一键启动
 ```bash
 ./scripts/start_tmux_training.sh

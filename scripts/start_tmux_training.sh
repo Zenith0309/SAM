@@ -40,9 +40,9 @@ TRAIN_CMD="${CONDA_ACTIVATE} && cd \"${REPO_ROOT}\" && \\
 python train_sam_decoder_bdd100k.py \\
   --distributed \\
   --world-size 4 \\
-  --num-epochs 100 \\
-  --debug-train-samples 128 \\
-  --debug-val-samples 64 \\
+  --num-epochs 50 \\
+  --debug-train-samples 0 \\
+  --debug-val-samples 0 \\
   --max-classes-per-image 6 \\
   2>&1 | tee \"${LOG_FILE}\""
 tmux send-keys -t "${SESSION_NAME}:0" \
