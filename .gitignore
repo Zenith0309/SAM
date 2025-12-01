@@ -14,7 +14,7 @@ wheels/
 
 # local datasets
 /dataset/
-
+/logs/
 
 # pytorch/python/numpy formats
 *.pth

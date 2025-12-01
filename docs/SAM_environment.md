@@ -79,7 +79,7 @@ python train_sam_decoder_bdd100k.py \
 
 > 确保 `world-size` 不超过可用 GPU 数，必要时改用 `torchrun --nproc_per_node=4 ...`。
 
-### Batched 训练（支持 batch>1）
+## Batched 训练（支持 batch>1）
 ```bash
 python train_sam_decoder_batched.py \
   --batch-size 4 \
@@ -106,10 +106,16 @@ python train_sam_decoder_batched.py \
 ### 推理/可视化
 ```bash
 python run_sam_mask.py \
-  --checkpoint checkpoints/sam_decoder_bdd_best.pth \
-  --input-dir dataset/10k/val \
-  --output-dir output_masks
+  --bdd-root /path/to/dataset \
+  --sam-checkpoint checkpoints/sam_decoder_bdd_best.pth \
+  --output-dir output_masks \
+  --num-samples 10
 ```
+
+常用参数：
+- `--bdd-root` / `--test-dir`：指定测试图目录，支持环境变量 `BDD_ROOT`，不同机器无需改源码；
+- `--sam-checkpoint` 和 `--model-type`：切换不同权重或 SAM 规格；
+- `--points-per-side`、`--pred-iou-thresh` 等阈值可按需求调整掩码密度与质量。
 
 ## 6. 常见问题
 
